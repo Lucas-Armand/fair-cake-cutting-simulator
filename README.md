@@ -1,12 +1,66 @@
 # Fair Cake-Cutting Simulator
+
 ## Project Description
+The Fair Cake-Cutting Simulator is a computational tool for exploring the fair division problem in game theory and economics. It simulates various strategies for dividing a resource (symbolized as a cake) among participants to achieve fairness and envy-free outcomes.
 
-The Fair Cake-Cutting Simulator is a computational exploration of the classic fair division problem, often known as the "cake-cutting problem". This project offers an innovative approach to simulate and analyze various strategies for dividing a resource (represented as a cake) among multiple participants in a fair and envy-free manner.
+## Features
+Dynamic Command Processing: The simulator includes functions for processing commands related to cake division and evaluating allocation satisfaction.
+Envy-Free Division: It aims to divide a cake in a way that is perceived as fair by all participants.
+Simulation of Different Scenarios: Users can simulate various scenarios with different perceptions of value among participants.
 
-The core functionality of this project revolves around simulating the process of fair division. It models scenarios where participants have different perceptions of value and aims to achieve a division that is fair from everyone's perspective,which includes the proposal of a unique syntax to represent the problem.
+## How to Use
+Setup: Clone the repository and install the required libraries (numpy, pandas).
+Running Simulations: Use cake.py for the core functionalities. It includes functions to process division commands and check allocation satisfaction.
+Examples: example.py provides examples of how to use the simulator to divide a cake among participants and evaluate the fairness of the allocation.
 
-## Applications
-This simulator serves as an excellent tool for researchers and enthusiasts in the field of game theory, economics, and computational social science. It provides a practical framework to understand and analyze how different strategies and perceptions can impact the outcome of fair division in resource allocation problems.
+## Example Usage
 
-## Getting Started
-To dive into the Fair Cake-Cutting Simulator, clone this repository and explore the Python scripts that power the simulation. The project is designed to be intuitive and user-friendly, allowing users to easily modify parameters, test different scenarios, and analyze the outcomes of various cake-cutting strategies.
+```python
+# Sample code snippet from example.py
+import cake
+import pandas as pd
+
+# Example of initializing evaluations and processing commands
+# Start with one holly cake:
+evaluations = pd.DataFrame({
+    '1.1': [100, 100, 100]
+}, index=['A', 'B', 'C'])
+print("Initial situation:\n", evaluations)
+
+command = "A:1.1/3 => 2.1 = 2.2 = 2.3"
+evaluations,_ = process_command(evaluations, command)
+print('')
+print(command)
+print('')
+print("\nAfter A's command:\n", evaluations)
+
+command = "B:2.2/2 => 3.1 = 2.3"
+evaluations,_ = process_command(evaluations, command)
+print('')
+print(command)
+print('')
+print("\nAfter B's command:\n", evaluations)
+
+command = "C:3.2/3 => 4.1 = 4.2 = 4.3"
+evaluations,_ = process_command(evaluations, command)
+print('')
+print(command)
+print('')
+print("\nAfter C's command:\n", evaluations)
+
+allocation_command = "A <= 2.1, 4.2; B <= 3.1, 4.1; C <= 2.3, 4.3"
+print('')
+print(allocation_command)
+print('')
+final_matrix, satisfactory = process_command(evaluations, allocation_command)
+print("\nIs the allocation satisfactory:", satisfactory)
+print("\nFinal Matrix:\n", final_matrix)
+```
+
+## Contributions
+
+Contributions are welcome. Please read the contribution guidelines before submitting a pull request.
+
+## License
+
+[Specify the License if applicable]
