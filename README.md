@@ -28,7 +28,7 @@ evaluations = pd.DataFrame({'1.1': [100, 100, 100]}, index=['A', 'B', 'C'])
 print("Initial situation:\n", evaluations)
 
 # First Round - "A" decides:
-# A^(1.1*3 => 2.1 = 2.2 = 2.3): A divides the cake (1.1) into three equal parts (in their opinion).
+# A:(1.1/3 => 2.1 = 2.2 = 2.3): A divides the cake (1.1) into three equal parts (in their opinion).
 # Each part is valued by A as having one-third of the total value of the cake (33.33 each).
 command = "A:1.1/3 => 2.1 = 2.2 = 2.3"
 evaluations, _ = cake.process_command(evaluations, command)
@@ -36,7 +36,7 @@ evaluations, _ = cake.process_command(evaluations, command)
 print("\nAfter A's command:\n", evaluations)
 
 # Second Round - "B" decides:
-# B^(2.2*2 => 3.1 = 2.3): B divides part (2.2) into two parts (3.1 and 3.2), 
+# B:(2.2/2 => 3.1 = 2.3): B divides part (2.2) into two parts (3.1 and 3.2), 
 # such that (3.1) has the same value as (2.3) (in their opinion). Part (2.3) remains intact.
 command = "B:2.2/2 => 3.1 = 2.3"
 evaluations, _ = cake.process_command(evaluations, command)
@@ -44,7 +44,7 @@ evaluations, _ = cake.process_command(evaluations, command)
 print("\nAfter B's command:\n", evaluations)
 
 # Third Round - "C" decides:
-# C^(3.2*3 => 4.1 = 4.2 = 4.3): C divides part (3.2) into three equal parts.
+# C:(3.2/3 => 4.1 = 4.2 = 4.3): C divides part (3.2) into three equal parts.
 # Parts (2.1), (3.1), and (2.3) remain as they are.
 command = "C:3.2/3 => 4.1 = 4.2 = 4.3"
 evaluations, _ = cake.process_command(evaluations, command)
