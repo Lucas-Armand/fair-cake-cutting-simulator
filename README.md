@@ -1,5 +1,4 @@
 # Fair Cake-Cutting Simulator
----
 ## Project Description
 
 The Fair Cake-Cutting Simulator is a computational exploration of the classic fair division problem, often known as the "cake-cutting problem". This project offers an innovative approach to simulate and analyze various strategies for dividing a resource (represented as a cake) among multiple participants in a fair and envy-free manner.
