@@ -16,43 +16,47 @@ Simulation of Different Scenarios: Users can simulate various scenarios with dif
 ## Example Usage
 
 ```python
-# Sample code snippet from example.py
-import cake
+import numpy as np
 import pandas as pd
+import cake
 
-# Example of initializing evaluations and processing commands
-# Start with one holly cake:
-evaluations = pd.DataFrame({
-    '1.1': [100, 100, 100]
-}, index=['A', 'B', 'C'])
+# Initial Values: 
+# Each participant (A, B, and C) assigns a total value of 100 to the cake. 
+# This suggests that each participant views the cake as having the same total value.
+evaluations = pd.DataFrame({'1.1': [100, 100, 100]}, index=['A', 'B', 'C'])
+# Display initial situation
 print("Initial situation:\n", evaluations)
 
+# First Round - "A" decides:
+# A^(1.1*3 => 2.1 = 2.2 = 2.3): A divides the cake (1.1) into three equal parts (in their opinion).
+# Each part is valued by A as having one-third of the total value of the cake (33.33 each).
 command = "A:1.1/3 => 2.1 = 2.2 = 2.3"
-evaluations,_ = process_command(evaluations, command)
-print('')
-print(command)
-print('')
+evaluations, _ = cake.process_command(evaluations, command)
+# Display evaluations after A's command
 print("\nAfter A's command:\n", evaluations)
 
+# Second Round - "B" decides:
+# B^(2.2*2 => 3.1 = 2.3): B divides part (2.2) into two parts (3.1 and 3.2), 
+# such that (3.1) has the same value as (2.3) (in their opinion). Part (2.3) remains intact.
 command = "B:2.2/2 => 3.1 = 2.3"
-evaluations,_ = process_command(evaluations, command)
-print('')
-print(command)
-print('')
+evaluations, _ = cake.process_command(evaluations, command)
+# Display evaluations after B's command
 print("\nAfter B's command:\n", evaluations)
 
+# Third Round - "C" decides:
+# C^(3.2*3 => 4.1 = 4.2 = 4.3): C divides part (3.2) into three equal parts.
+# Parts (2.1), (3.1), and (2.3) remain as they are.
 command = "C:3.2/3 => 4.1 = 4.2 = 4.3"
-evaluations,_ = process_command(evaluations, command)
-print('')
-print(command)
-print('')
+evaluations, _ = cake.process_command(evaluations, command)
+# Display evaluations after C's command
 print("\nAfter C's command:\n", evaluations)
 
+# Final Decision:
+# The final choice of each participant is given, for example, A <= 2.1, indicating A chooses part (2.1).
+# Final values for each participant are summed up, showing how each evaluated their final part.
 allocation_command = "A <= 2.1, 4.2; B <= 3.1, 4.1; C <= 2.3, 4.3"
-print('')
-print(allocation_command)
-print('')
-final_matrix, satisfactory = process_command(evaluations, allocation_command)
+final_matrix, satisfactory = cake.process_command(evaluations, allocation_command)
+# Display if the allocation is satisfactory and the final matrix
 print("\nIs the allocation satisfactory:", satisfactory)
 print("\nFinal Matrix:\n", final_matrix)
 ```
