@@ -9,9 +9,9 @@ Envy-Free Division: It aims to divide a cake in a way that is perceived as fair 
 Simulation of Different Scenarios: Users can simulate various scenarios with different perceptions of value among participants.
 
 ## How to Use
-Setup: Clone the repository and install the required libraries (numpy, pandas).
-Running Simulations: Use cake.py for the core functionalities. It includes functions to process division commands and check allocation satisfaction.
-Examples: example.py provides examples of how to use the simulator to divide a cake among participants and evaluate the fairness of the allocation.
+* Setup: Clone the repository and install the required libraries (numpy, pandas).
+* Running Simulations: Use cake.py for the core functionalities. It includes functions to process division commands and check allocation satisfaction.
+* Examples: example.py provides examples of how to use the simulator to divide a cake among participants and evaluate the fairness of the allocation.
 
 ## Example Usage
 
